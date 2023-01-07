@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Work+Sans:wght@400;500;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  background: url(./images/background.jpg);
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: certain;
+  background-color: #000000;
+  color: #191919;
+  font-family: 'Work Sans', sans-serif;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: #191919;
+  text-decoration: none;
+}
+
+.container {
+  width: 800px;
+  min-height: 600px;
+  margin: 100px;
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 35px;
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+header h1 {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+header h1 span {
+  font-family: 'Dancing Script', cursive;
+}
+
+form {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+input:focus,
+button:focus {
+  outline: 0;
+}
+
+input {
+  flex: 1;
+  outline: 0;
+  border: none;
+  border-radius: 5px;
+  background-color: #191919;
+  padding: 15px;
+  color: #ffffff;
+}
+
+button {
+  margin-left: 5px;
+  padding: 15px;
+  background-color: #191919;
+  outline: 0;
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+}
+
+.meals-container h2 {
+  margin: 60px 0 40px 0;
+  padding: 0;
+  color: #2c2c2c;
+  font-size: 15px;
+  text-align: center;
+}
+
+.meals {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 30px;
+}
+
+.meal {
+  cursor: pointer;
+  position: relative;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: #000000;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.meal img {
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.2s ease-in;
+}
+
+.meal:hover img {
+  opacity: 0.7;
+}
+
+.meal-info {
+  width: 100%;
+  height: 35%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  padding: 20px;
+  background-color: #191919;
+}
+
+.meal-info h3 {
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.meal-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  border-radius: 35px;
+  padding: 50px 40px;
+  background-color: #e5e5f7;
+  background-size: 20px 20px;
+  background-image: repeating-linear-gradient(
+    0deg,
+    #f6f6f6,
+    #efe1d8 1px,
+    #ffffff 1px,
+    #ffffff
+  );
+}
+
+.item-subtitle {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  border-radius: 5px;
+  margin: 0;
+  padding: 10px 15px;
+  background-color: #191919;
+  color: #ffffff;
+  font-size: 12px;
+}
+
+.item-title {
+  text-align: center;
+  font-family: 'Dancing Script', cursive;
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.meal-item img {
+  width: 300px;
+  margin: 40px 0;
+  border-radius: 35px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 18px 50px -10px;
+}
+
+.item-info ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  margin-bottom: 40px;
+  padding: 0;
+}
+
+.item-info ul li {
+  margin: 5px;
+  padding: 10px;
+  font-size: 12px;
+  font-weight: 300;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 35px;
+}
+
+.item-instruction {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+@media screen and (max-width: 780px) {
+  .container {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  header h1 {
+    display: none;
+  }
+
+  form {
+    width: 100%;
+  }
+
+  .meals {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .meals {
+    grid-template-columns: 1fr;
+  }
+
+  .meal-item {
+    padding: 0;
+  }
+
+  .meal-item img {
+    width: 200px;
+  }
+
+  .item-subtitle {
+    display: none;
+  }
+
+  .item-info ul li {
+    font-size: 10px;
+  }
+
+  .item-instruction {
+    font-size: 14px;
+  }
+}
