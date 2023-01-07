@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="./main.js" defer></script>
+    <title>Nana's Recipes | Meal finder</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="background-img"></div>
+        <header>
+            <h1><a href="/"><span>Nana</span>'s special <br />recipes</a></h1>
+            <form id="submit-form">
+                <input id="search-input" type="text" placeholder="Find your meals" />
+                <button type="submit" class="btn search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button id="random-btn" class="btn random-btn" type="button">
+                    <i class="fas fa-random"></i>
+                </button>
+            </form>
+        </header>
+        <main id="meals-container" class="meals-container">
+            <h2 id="result-heading">Search recipes for make your day better!</h2>
+            <div id="meals" class="meals"></div>
+            <div id="meal-item"></div>
+        </main>
+    </div>
+</body>
+
+</html>
