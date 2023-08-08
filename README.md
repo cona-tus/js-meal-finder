@@ -11,13 +11,15 @@
 
 # 1. Project
 
-## 1.1. Project Information
+## 1-1. Project Information
 
-본 프로젝트는 **레시피 검색 애플리케이션** 입니다. [TheMealDB](www.themealdb.com)에서 제공하는 음식 데이터 API를 바탕으로 제작했습니다. 검색어를 입력하면 키워드를 포함한 목록이 나오고, 그 중 하나를 클릭하면 해당 아이템의 상세 정보를 볼 수 있습니다. 또한 특정 키워드를 입력하지 않고 랜덤한 레시피를 받을 수도 있습니다.
+본 프로젝트는 자바스크립트를 사용해 만든 **레시피 검색 애플리케이션**입니다. [TheMealDB](https://www.themealdb.com/ 'TheMealDB')에서 제공하는 음식 데이터 API를 기반으로 제작하였습니다. 사용자가 검색어를 입력하면 해당 키워드를 포함한 목록이 나타나며, 목록 중 하나를 클릭하면 해당 아이템의 상세 정보를 확인할 수 있습니다. 또한 특정 키워드를 입력하지 않고 랜덤한 레시피를 받을 수도 있습니다.
+
+<sub>\* 본 애플리케이션은 인터넷 강의를 참고하여 만들었으나, 필요하다고 판단되는 부분에서 원본 코드를 수정하고 기능을 보완했습니다. </sub>
 
 <br/>
 
-## 1.2. Project Duration & Participants
+## 1-2. Project Duration & Participants
 
 - 2023-1-7 ~ 2023-1-7
 - 개인 프로젝트 (1인)
@@ -34,11 +36,11 @@
 
 # 3. Main Features
 
-## 3.1. Searching Recipes by Keywords
+## 3-1. Searching Recipes by Keywords
 
 ![meal-search](https://user-images.githubusercontent.com/90844424/211146022-3259f4e5-1214-4799-9c86-597e5f454e4a.gif)
 
-키워드로 결과 목록을 열거할 수 있는 API를 활용해 검색이 가능합니다. 검색창에 입력한 값을 term에 할당하여 fetch할 url에 넣어줬습니다. 검색 결과는 div.mealsEl의 innerHTML을 수정하여 div.meal를 추가했습니다.
+TheMealDB API를 활용하여 키워드로 검색이 가능합니다. 검색창에 입력한 값을 term 변수에 할당하고, fetch할 URL에 해당 값을 넣어줬습니다. 검색 결과는 div.mealsEl의 innerHTML을 수정하여 div.meal을 추가하였습니다.
 
 ```js
 // Search meal & fetch from API
@@ -86,14 +88,14 @@ submitForm.addEventListener('submit', onSearchMeal);
 
 <br />
 
-## 3.2. Fetching Random Recipes
+## 3-2. Fetching Random Recipes
 
 ![meal-random](https://user-images.githubusercontent.com/90844424/211146742-a39bed13-d902-48c1-8a6c-234a8089608d.gif)
 
-랜덤 API를 통해 하나의 레시피를 상세하게 살펴볼 수 있습니다. meal 데이터를 DOM에 추가하는 함수에 전달합니다.
+TheMealDB API를 통해 하나의 레시피를 상세하게 살펴볼 수 있습니다. meal 데이터를 DOM에 추가하는 함수 `addMealToDOM`에 전달합니다.
 
 ```js
-// fetch random meal from API
+// Fetch random meal from API
 async function onGetRandomMeal() {
   mealEl.innerHTML = '';
   resultHeading.innerHTML = '';
@@ -111,13 +113,22 @@ randomBtn.addEventListener('click', onGetRandomMeal);
 
 <br />
 
-## 3.3. Fetching Items by ID
+## 3-3. Fetching Items by ID
 
 ![meal-id](https://user-images.githubusercontent.com/90844424/211146949-1fab15c2-265f-41c9-b535-770ec3f8e31b.jpg)
 
-원본 코드는 div.meal-info에 데이터 속성을 붙여 mealID를 찾는 방식을 사용했으나, div.meal-info가 아닌 이미지를 클릭했을 때 정보를 얻을 수 없는 문제가 있었습니다.
+원본 강의 코드에서는 div.meal-info에 데이터 속성을 붙여 mealID를 찾는 방식을 사용했습니다. 그러나 div.meal-info가 아닌 이미지를 클릭했을 때 정보를 얻을 수 없는 문제가 있었습니다.
 
-그래서 onGetMeal 함수를 만들어 div.meal 엘레먼트에 `data-mealId="${meal.idMeal}"`를 부여했고, event target의 부모노드를 찾아 개별 mealID를 얻도록 했습니다. 찾은 mealID는 비동기 함수인 getMealByID로 전달되어 하나의 레시피가 화면에 나타나게 됩니다.
+그래서 onGetMeal 함수를 만들어 div.meal 엘레먼트에 `data-mealId="${meal.idMeal}"`를 부여했고, event target의 부모 노드를 찾아 개별 mealID를 얻도록 했습니다. 찾은 mealID는 비동기 함수인 getMealByID 함수로 전달되어 하나의 레시피가 화면에 나타나게 됩니다.
+
+```js
+<div class='meal' data-mealId='${meal.idMeal}'>
+  <img src='${meal.strMealThumb}' alt='${meal.strMeal}' />
+  <div class='meal-info'>
+    <h3>${meal.strMeal}</h3>
+  </div>
+</div>
+```
 
 ```js
 // Fetch meal by ID
@@ -144,11 +155,11 @@ mealsEl.addEventListener('click', onGetMeal);
 
 <br />
 
-## 3.4. Get Detailed Recipes to Paint DOM
+## 3-4. Get a Detailed recipe
 
 ![meal-detail](https://user-images.githubusercontent.com/90844424/211174748-e0fbb8e4-902b-4978-9186-bff658763a4e.gif)
 
-레시피 페이지에서는 음식의 이미지, 재료, 지역, 카테고리 등 자세한 정보를 확인할 수 있습니다. 비슷한 데이터를 묶어주기 위해 mealObj 오브젝트를 만들어 각각의 재료와 계량 정보를 쌍으로 넣어줬습니다. 해당 데이터가 담긴 array를 mapping하여 HTML로 출력했습니다.
+레시피 페이지에서는 음식의 이미지, 재료, 지역, 카테고리 등 자세한 정보를 확인할 수 있습니다. 비슷한 데이터를 묶어주기 위해 mealObj 오브젝트를 만들어 각각의 재료와 계량 정보를 쌍으로 넣어주었습니다. 해당 데이터가 담긴 배열을 매핑하여 HTML로 출력했습니다.
 
 ```js
 // Add meal to DOM
@@ -198,22 +209,21 @@ function addMealToDOM(meal) {
 
 # 4. UI/UX
 
-## 4.1. Design Concept
+## 4-1. Design Concept
 
 ![meal-design](https://user-images.githubusercontent.com/90844424/211174959-9b9168ec-bce3-4a71-8c80-6f032ccf2e10.jpg)
 
-할머니의 레시피라는 컨셉으로 기획하고, 레시피북 느낌으로 디자인했습니다.
-사용자에게 자세한 정보를 전달하기 위해 지역과 카테고리 데이터를 우측 상단에 표시했습니다.
+할머니의 레시피라는 컨셉으로 기획하고, 레시피북 느낌으로 디자인했습니다. 사용자에게 자세한 정보를 전달하기 위해 지역과 카테고리 데이터를 우측 상단에 표시했습니다.
 
 <br />
 
-## 4.2. Responsive App Design
+## 4-2. Responsive App Design
 
 ![meal-res](https://user-images.githubusercontent.com/90844424/211175327-3a6bdb75-6990-4b80-af63-4286a30bbebc.gif)
 
 ![meal-device](https://user-images.githubusercontent.com/90844424/211175278-2fb59561-56d5-4a0c-9d4e-d9510ab34629.jpg)
 
-불필요한 페이지 전환을 피하고자 싱글페이지 앱으로 만들었으며 다양한 디바이스에 반응형으로 작동합니다.
+불필요한 페이지 전환을 최소화하기 위해 싱글 페이지 앱으로 개발되었습니다. 또한 반응형으로 제작되어 다양한 디바이스 환경에서 이용할 수 있습니다.
 
 ```css
 @media screen and (max-width: 780px) {
@@ -266,5 +276,3 @@ function addMealToDOM(meal) {
 
 <br />
 <br />
-
-<sub><sup>본 애플리케이션은 인터넷 강의를 참고하여 만들었으나, 필요하다 생각되는 부분에서 원본 코드를 수정하고, 기능을 보완했습니다.</sup></sub>
