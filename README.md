@@ -38,10 +38,10 @@
 
 ## 3. Main Features
 
-1. [키워드로 레시피 검색]()
-2. [랜덤 레시피]()
-3. [아이템 받아오기]()
-4. [세부 정보 받아오기]()
+1. [키워드로 레시피 검색](#3-1-searching-recipes-by-keywords)
+2. [랜덤 레시피](#3-2-fetching-random-recipes)
+3. [아이템 받아오기](#3-3-fetching-items-by-id)
+4. [세부 정보 받아오기](#3-4-get-a-detailed-recipe)
 
 <br/>
 
