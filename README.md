@@ -2,24 +2,26 @@
 
 ![meal-thumb](https://user-images.githubusercontent.com/90844424/211139993-6fd9d765-7ce3-411b-80cd-a643b52f538d.jpg)
 
-<br />
+<br/>
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/7db2dd57-0cab-4e59-ac4b-9d1badf763b3/deploy-status)](https://app.netlify.com/sites/conatus-js-meal-finder/deploys) | [Live Demo](https://conatus-js-meal-finder.netlify.app/)
+🔗 Nana's Recipes [[Live Demo](https://conatus-js-meal-finder.netlify.app/)]
 
 <br/>
 <br/>
 
-# 1. Project
+## 1. Project
 
-## 1-1. Project Information
+### 1-1. Project Information
 
-본 프로젝트는 자바스크립트를 사용해 만든 **레시피 검색 애플리케이션**입니다. [TheMealDB](https://www.themealdb.com/ 'TheMealDB')에서 제공하는 음식 데이터 API를 기반으로 제작하였습니다. 사용자가 검색어를 입력하면 해당 키워드를 포함한 목록이 나타나며, 목록 중 하나를 클릭하면 해당 아이템의 상세 정보를 확인할 수 있습니다. 또한 특정 키워드를 입력하지 않고 랜덤한 레시피를 받을 수도 있습니다.
-
-<sub>\* 본 애플리케이션은 인터넷 강의를 참고하여 만들었으나, 필요하다고 판단되는 부분에서 원본 코드를 수정하고 기능을 보완했습니다. </sub>
+본 프로젝트는 자바스크립트를 사용해 만든 레시피 검색 애플리케이션입니다. [TheMealDB](https://www.themealdb.com/ 'TheMealDB')에서 제공하는 음식 데이터 API를 기반으로 제작하였습니다. 사용자가 검색어를 입력하면 해당 키워드를 포함한 목록이 나타나며, 목록 중 하나를 클릭하면 해당 아이템의 상세 정보를 확인할 수 있습니다. 또한 특정 키워드를 입력하지 않고 랜덤한 레시피를 받을 수도 있습니다.
 
 <br/>
 
-## 1-2. Project Duration & Participants
+<sub>\* 본 애플리케이션은 인터넷 강의를 참고하여 만들었으나, 필요하다고 판단되는 부분에서 원본 코드를 수정했습니다. 또한 새롭게 디자인했습니다.</sub>
+
+<br/>
+
+### 1-2. Project Duration & Participants
 
 - 2023-1-7 ~ 2023-1-7
 - 개인 프로젝트 (1인)
@@ -27,16 +29,23 @@
 <br/>
 <br/>
 
-# 2. Skills
+## 2. Skills
 
 ![HTML](https://img.shields.io/badge/html-E34F26?style=for-the-badge&logo=html5&logoColor=white) ![CSS](https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white) ![JAVASCRIPT](https://img.shields.io/badge/JavaScript-f6e158?style=for-the-badge&logo=JavaScript&logoColor=ffffff) ![Git](https://img.shields.io/badge/Git-f05032?style=for-the-badge&logo=git&logoColor=ffffff)
 
 <br/>
 <br/>
 
-# 3. Main Features
+## 3. Main Features
 
-## 3-1. Searching Recipes by Keywords
+1. [키워드로 레시피 검색]()
+2. [랜덤 레시피]()
+3. [아이템 받아오기]()
+4. [세부 정보 받아오기]()
+
+<br/>
+
+### 3-1. Searching Recipes by Keywords
 
 ![meal-search](https://user-images.githubusercontent.com/90844424/211146022-3259f4e5-1214-4799-9c86-597e5f454e4a.gif)
 
@@ -86,13 +95,14 @@ async function onSearchMeal(event) {
 submitForm.addEventListener('submit', onSearchMeal);
 ```
 
-<br />
+<br/>
+<br/>
 
-## 3-2. Fetching Random Recipes
+### 3-2. Fetching Random Recipes
 
 ![meal-random](https://user-images.githubusercontent.com/90844424/211146742-a39bed13-d902-48c1-8a6c-234a8089608d.gif)
 
-TheMealDB API를 통해 하나의 레시피를 상세하게 살펴볼 수 있습니다. meal 데이터를 DOM에 추가하는 함수 `addMealToDOM`에 전달합니다.
+TheMealDB API를 통해 하나의 레시피를 상세하게 살펴볼 수 있습니다. meal 데이터를 DOM에 추가하는 함수 `addMealToDOM()`에 전달합니다.
 
 ```js
 // Fetch random meal from API
@@ -111,15 +121,14 @@ async function onGetRandomMeal() {
 randomBtn.addEventListener('click', onGetRandomMeal);
 ```
 
-<br />
+<br/>
+<br/>
 
-## 3-3. Fetching Items by ID
+### 3-3. Fetching Items by ID
 
 ![meal-id](https://user-images.githubusercontent.com/90844424/211146949-1fab15c2-265f-41c9-b535-770ec3f8e31b.jpg)
 
 원본 강의 코드에서는 div.meal-info에 데이터 속성을 붙여 mealID를 찾는 방식을 사용했습니다. 그러나 div.meal-info가 아닌 이미지를 클릭했을 때 정보를 얻을 수 없는 문제가 있었습니다.
-
-그래서 onGetMeal 함수를 만들어 div.meal 엘레먼트에 `data-mealId="${meal.idMeal}"`를 부여했고, event target의 부모 노드를 찾아 개별 mealID를 얻도록 했습니다. 찾은 mealID는 비동기 함수인 getMealByID 함수로 전달되어 하나의 레시피가 화면에 나타나게 됩니다.
 
 ```js
 <div class='meal' data-mealId='${meal.idMeal}'>
@@ -129,6 +138,10 @@ randomBtn.addEventListener('click', onGetRandomMeal);
   </div>
 </div>
 ```
+
+<br/>
+
+그래서 `onGetMeal()` 함수를 만들어 div.meal 요소에 `data-mealId="${meal.idMeal}"`를 부여했고, event target의 부모 노드를 찾아 개별 mealID를 얻도록 했습니다. 찾은 mealID는 비동기 함수인 getMealByID 함수로 전달되어 하나의 레시피가 화면에 나타나게 됩니다.
 
 ```js
 // Fetch meal by ID
@@ -153,9 +166,10 @@ function onGetMeal(event) {
 mealsEl.addEventListener('click', onGetMeal);
 ```
 
-<br />
+<br/>
+<br/>
 
-## 3-4. Get a Detailed recipe
+### 3-4. Get a Detailed recipe
 
 ![meal-detail](https://user-images.githubusercontent.com/90844424/211174748-e0fbb8e4-902b-4978-9186-bff658763a4e.gif)
 
@@ -207,19 +221,18 @@ function addMealToDOM(meal) {
 <br/>
 <br/>
 
-# 4. UI/UX
+## 4. UI/UX
 
-## 4-1. Design Concept
+### 4-1. Design Concept
 
 ![meal-design](https://user-images.githubusercontent.com/90844424/211174959-9b9168ec-bce3-4a71-8c80-6f032ccf2e10.jpg)
 
 할머니의 레시피라는 컨셉으로 기획하고, 레시피북 느낌으로 디자인했습니다. 사용자에게 자세한 정보를 전달하기 위해 지역과 카테고리 데이터를 우측 상단에 표시했습니다.
 
-<br />
+<br/>
+<br/>
 
-## 4-2. Responsive App Design
-
-![meal-res](https://user-images.githubusercontent.com/90844424/211175327-3a6bdb75-6990-4b80-af63-4286a30bbebc.gif)
+### 4-2. Responsive Web Design
 
 ![meal-device](https://user-images.githubusercontent.com/90844424/211175278-2fb59561-56d5-4a0c-9d4e-d9510ab34629.jpg)
 
@@ -274,5 +287,7 @@ function addMealToDOM(meal) {
 }
 ```
 
-<br />
-<br />
+<br/>
+<br/>
+
+[맨위로 이동하기](#-레시피-검색-앱-nanas-recipes-토이프로젝트)
